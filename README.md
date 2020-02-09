@@ -46,7 +46,7 @@ cd bin
 java com.analyttica.GameApplication
 ```
 
-#Sample Output:
+## Sample Output: Pattern Game
 ```
 TicTocToe !!!
 1. Pattern Game
@@ -138,5 +138,69 @@ Computer turn !
 -----------
  X | O | X 
 :( Game tie!
+Do you want play again (y/n) : n
+```
+
+## Sample Output: Number Game
+```
+TicTocToe !!!
+1. Pattern Game
+2. Number Game
+Enter your choice: 2
+1. Single Player
+2. Multi Player
+Enter your choice: 1
+   |   |   
+-----------
+   |   |   
+-----------
+   |   |   
+
+Computer turn !
+
+ 9 |   |   
+-----------
+   |   |   
+-----------
+   |   |   
+Player 1 turn !
+
+Enter x & y positions to place Even Number:1 1
+Enter your value from (1-9):2
+ 9 |   |   
+-----------
+   | 2 |   
+-----------
+   |   |   
+Computer turn !
+
+ 9 |   |   
+-----------
+   | 2 |   
+-----------
+   |   | 1 
+Player 1 turn !
+
+Enter x & y positions to place Even Number:1 2
+Enter your value from (1-9):8
+ 9 |   |   
+-----------
+   | 2 | 8 
+-----------
+   |   | 1 
+Computer turn !
+
+ 9 |   |   
+-----------
+ 5 | 2 | 8 
+-----------
+   |   | 1 
+Board Layout:
+ 9 |   |   
+-----------
+ 5 | 2 | 8 
+-----------
+   |   | 1 
+Congratulations :-) Computer Wins!
 Do you want play again (y/n) : n
 ```
