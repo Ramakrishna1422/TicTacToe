@@ -1,6 +1,8 @@
-package com.analyttica.tictactoe;
+package com.analyttica.tictactoe.manager;
 
-
+/***
+ * interface to build board games like tic-tac-toe models games
+ */
 public interface Game {
     int BOARDSIZE = 3;
 
@@ -14,12 +16,10 @@ public interface Game {
     void setPlayerMode(boolean singlePlayer);
     boolean isSinglePlayer();
     int getCurrentPlayer();
+    String getUserValue();
 
     boolean placeSign(int xPosition, int yPosition, int value);
-
-    default int getUserValue() {
-        return 0;
-    }
-
     void placeSignByComputer();
+
+
 }

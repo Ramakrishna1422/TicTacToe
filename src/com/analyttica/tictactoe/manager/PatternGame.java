@@ -1,4 +1,6 @@
-package com.analyttica.tictactoe;
+package com.analyttica.tictactoe.manager;
+
+import com.analyttica.tictactoe.models.Players;
 
 public class PatternGame extends AbstractGame {
 
@@ -6,6 +8,13 @@ public class PatternGame extends AbstractGame {
         initializeBoard();
     }
 
+    /***
+     * to place the user value in the board
+     * @param xPosition
+     * @param yPosition
+     * @param value
+     * @return true will indicates value accepted and placed. false will not accepted.
+     */
     @Override
     public boolean placeSign(int xPosition, int yPosition, int value) {
         if (xPosition >= 0 && xPosition < BOARDSIZE  && (yPosition >=0 && yPosition < BOARDSIZE)) {
@@ -22,23 +31,30 @@ public class PatternGame extends AbstractGame {
         return (a + b + c) == 3 * (int) 'X' || (a + b + c) == 3 * (int) 'O';
     }
 
+    /***
+     * to identify user value type
+     * @return
+     */
     @Override
-    public int getUserValue() {
+    public String getUserValue() {
         if(isSinglePlayer()) {
             if(getCurrentPlayer() == Players.COMPUTER) {
-                return (int) 'X';
+                return "X";
             } else {
-                return (int) 'O';
+                return "O";
             }
         } else {
             if(getCurrentPlayer() == Players.PLAYER_1) {
-                return (int) 'X';
+                return "X";
             } else {
-                return (int) 'O';
+                return "O";
             }
         }
     }
 
+    /***
+     * AI based best position identification to win or make it tie.
+     */
     @Override
     public void placeSignByComputer() {
         int bestScore = -1000;
@@ -61,7 +77,11 @@ public class PatternGame extends AbstractGame {
         board[bestRow][bestCol] = (int) 'X';
     }
 
-
+    /***
+     * recursively comparing to get the best move (minimax algorithm)
+     * @param isMax
+     * @return
+     */
     private int bestMove(boolean isMax) {
         boolean isWon = checkForWin();
         if(isWon) {

@@ -1,5 +1,7 @@
-package com.analyttica.tictactoe;
+package com.analyttica.tictactoe.manager;
 
+
+import com.analyttica.tictactoe.models.Players;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,13 @@ public class NumberGame extends AbstractGame {
 
     }
 
+    /***
+     *
+     * @param xPosition
+     * @param yPosition
+     * @param value
+     * @return true will indicates value accepted and placed. false will not accepted.
+     */
     @Override
     public boolean placeSign(int xPosition, int yPosition, int value) {
         if (xPosition >= 0 && xPosition < BOARDSIZE  && (yPosition >=0 && yPosition < BOARDSIZE)) {
@@ -42,6 +51,11 @@ public class NumberGame extends AbstractGame {
         return false;
     }
 
+    /***
+     * Odd and even numbers accepted
+     * @param value
+     * @return
+     */
     private boolean isValidPlayerOption(int value) {
         if(isSinglePlayer()) {
             return (value % 2 == (currentPlayer == Players.COMPUTER ? 1 : 0));
@@ -49,6 +63,12 @@ public class NumberGame extends AbstractGame {
             return (value % 2 == (currentPlayer == Players.PLAYER_1 ? 1 : 0));
         }
     }
+
+    /***
+     * checking whether value is exists in board or not
+     * @param value
+     * @return
+     */
 
     private boolean isValueExists(int value) {
         for (int i = 0; i < BOARDSIZE; i++) {
@@ -61,15 +81,39 @@ public class NumberGame extends AbstractGame {
         return false;
     }
 
+    /***
+     * to identify user value type
+     * @return
+     */
+    @Override
+    public String getUserValue() {
+        if(isSinglePlayer()) {
+            if(getCurrentPlayer() == Players.COMPUTER) {
+                return "Odd Number";
+            } else {
+                return "Even Number";
+            }
+        } else {
+            if(getCurrentPlayer() == Players.PLAYER_1) {
+                return "Odd Number";
+            } else {
+                return "Even Number";
+            }
+        }
+    }
+
     @Override
     protected boolean gameStrategyMatch(int a, int b, int c) {
         return (a != 0 && b != 0 && c != 0) && (a + b + c) == 15;
     }
 
+    /***
+     * AI based value placed in best position to win or make it tie.
+     */
     @Override
     public void placeSignByComputer() {
         if(oddNumbers.size() == 5) {
-            board[0][0] = random.nextInt(5);
+            board[0][0] = oddNumbers.get(random.nextInt(5));
             oddNumbers.remove(new Integer(board[0][0]));
         } else {
             int bestScore = -1000;
@@ -102,6 +146,13 @@ public class NumberGame extends AbstractGame {
 
     }
 
+    /***
+     * recursively comparing to get the best move (minimax algorithm)
+     * @param isMax
+     * @param remainOdd
+     * @param remainEven
+     * @return
+     */
     private int bestMove(boolean isMax, List<Integer> remainOdd, List<Integer> remainEven) {
         boolean isWon = checkForWin();
         if(isWon) {
@@ -109,9 +160,13 @@ public class NumberGame extends AbstractGame {
         } else if(isBoardFull()) {
             return 0;
         }
+        if(remainEven.isEmpty()) {
+            return 1;
+        } else if(remainOdd.isEmpty()) {
+            return -1;
+        }
         if(isMax) {
             int best = -1000;
-            //System.out.println("remainOdd====> " + remainOdd);
             for (Integer value : remainOdd) {
                 for (int i = 0; i < BOARDSIZE; i++) {
                     for (int j = 0; j < BOARDSIZE; j++) {

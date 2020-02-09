@@ -1,9 +1,14 @@
-package com.analyttica.tictactoe;
+package com.analyttica.tictactoe.models;
 
 public class Player {
     private int id;
     private String name;
     private int score;
+
+    public Player(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -31,6 +36,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return " name "+ " score=" + score ;
+        return " name "+ name + " score=" + score ;
     }
 }

@@ -1,4 +1,4 @@
-package com.analyttica.tictactoe;
+package com.analyttica.tictactoe.models;
 
 public class Players {
     public static int COMPUTER = 0;

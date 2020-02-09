@@ -1,4 +1,8 @@
-package com.analyttica.tictactoe;
+package com.analyttica.tictactoe.utils;
+
+import com.analyttica.tictactoe.manager.Game;
+import com.analyttica.tictactoe.manager.NumberGame;
+import com.analyttica.tictactoe.manager.PatternGame;
 
 public class GameFactory {
 
