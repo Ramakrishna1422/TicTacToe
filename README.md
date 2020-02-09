@@ -28,6 +28,12 @@ First player to get a sum of 15 on any row, column or diagonal wins (The row or 
    | 4 |   
 ````
 
+## Player Mode
+Two player modes available. 
+1. Single Player (Computer vs Player 1)
+2. Multi Player (Player 1 vs Player 2)
+
+
 To complie, go to project dierctory and run below command in terminal
 ```
 javac -d bin @sources.txt
