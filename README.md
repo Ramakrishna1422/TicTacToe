@@ -36,6 +36,7 @@ Two player modes available.
 
 To complie, go to project dierctory and run below command in terminal
 ```
+mkdir bin
 javac -d bin @sources.txt
 ```
 
