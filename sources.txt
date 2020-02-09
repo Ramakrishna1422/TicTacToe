@@ -1,0 +1,10 @@
+./src/com/analyttica/tictactoe/manager/NumberGame.java
+./src/com/analyttica/tictactoe/manager/AbstractGame.java
+./src/com/analyttica/tictactoe/manager/PatternGame.java
+./src/com/analyttica/tictactoe/manager/Game.java
+./src/com/analyttica/tictactoe/utils/GameFactory.java
+./src/com/analyttica/tictactoe/utils/PlayerCache.java
+./src/com/analyttica/tictactoe/models/Player.java
+./src/com/analyttica/tictactoe/models/Players.java
+./src/com/analyttica/tictactoe/controller/TicTacToeStarter.java
+./src/com/analyttica/GameApplication.java

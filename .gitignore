@@ -23,7 +23,6 @@ dump.rdb
 *.classpath
 *.project
 *.settings
-/bin/*
 
 # Do not store the logs folder and its contents
 /logs/*

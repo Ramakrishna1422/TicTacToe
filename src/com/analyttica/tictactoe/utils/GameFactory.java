@@ -12,6 +12,7 @@ public class GameFactory {
         } else if(gameType == 2) {
             return new NumberGame();
         } else {
+            //@TODO: to add more games
             return null;
         }
     }

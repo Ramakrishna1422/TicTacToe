@@ -21,6 +21,8 @@ public class TicTacToeStarter {
             System.out.println("2. Number Game");
             System.out.print("Enter your choice: ");
             int gameMode = scanner.nextInt();
+
+            //loading the game based on user selection
             GameFactory factory = new GameFactory();
             Game game = factory.loadGame(gameMode);
             if(game != null) {
@@ -28,18 +30,25 @@ public class TicTacToeStarter {
                 System.out.println("2. Multi Player");
                 System.out.print("Enter your choice: ");
                 int playerMode = scanner.nextInt();
+
+                //playmode selection details updating
                 if(playerMode == 1) {
                     game.setPlayerMode(true);
                     game.switchPlayer();
                 }
+
+                //displaying initial board
                 game.displayBoard();
                 System.out.println();
+
                 do {
                     System.out.println(PlayerCache.cache.get(game.getCurrentPlayer()).getName() + " turn !\n");
                     if((game.isSinglePlayer() && game.getCurrentPlayer() == Players.PLAYER_1) || game.getCurrentPlayer() != Players.COMPUTER) {
                         System.out.print("Enter x & y positions to place " + game.getUserValue() + ":");
                         int xPosition = scanner.nextInt();
                         int yPosition = scanner.nextInt();
+
+                        //to collect number for number based game
                         int userValue;
                         if(gameMode == 2) {
                             System.out.print("Enter your value from (1-9):");
@@ -54,19 +63,21 @@ public class TicTacToeStarter {
                             System.out.println("Invalid selection. Please try again");
                         }
                     } else {
+                        //computer turn to place the best value
                         game.placeSignByComputer();
                         game.switchPlayer();
                     }
                     game.displayBoard();
                 } while (!game.checkForWin() && !game.isBoardFull());
 
+                //checking final result of the game
                 if (game.isBoardFull() && !game.checkForWin()) {
                     System.out.println(":( Game tie!");
                 } else {
                     System.out.println("Board Layout:");
                     game.displayBoard();
                     game.switchPlayer();
-                    System.out.println(PlayerCache.cache.get(game.getCurrentPlayer()).getName() + " Wins!");
+                    System.out.println("Congratulations :-) " + PlayerCache.cache.get(game.getCurrentPlayer()).getName() + " Wins!");
                 }
                 System.out.print("Do you want play again (y/n) : ");
                 playOrSkip = scanner.next();
@@ -74,6 +85,8 @@ public class TicTacToeStarter {
                 System.out.println("Invalid Game Selection.");
             }
         } while(playOrSkip.equalsIgnoreCase("y"));
+
+        //closing input resources
         scanner.close();
     }
 }
