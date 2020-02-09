@@ -25,12 +25,12 @@ public class TicTacToeStarter {
             game.displayBoard();
             System.out.println();
             do {
-                System.out.println("Player " + game.getCurrentPlayer() + " turn !" + game.isSinglePlayer());
+                System.out.println("Player " + game.getCurrentPlayer() + " turn !");
                 if((game.isSinglePlayer() && game.getCurrentPlayer() == Players.PLAYER_1) || game.getCurrentPlayer() != Players.COMPUTER) {
                     System.out.print("Enter x & y positions:");
                     int xPosition = scanner.nextInt();
                     int yPosition = scanner.nextInt();
-                    int userValue = 0;
+                    int userValue;
                     if(gameMode == 2) {
                         System.out.print("Enter your value from (1-9):");
                         userValue = scanner.nextInt();
@@ -50,9 +50,9 @@ public class TicTacToeStarter {
             } while (!game.checkForWin() && !game.isBoardFull());
 
             if (game.isBoardFull() && !game.checkForWin()) {
-                System.out.println("The game was a tie!");
+                System.out.println(":( Game tie!");
             } else {
-                System.out.println("Current board layout:");
+                System.out.println("Board Layout:");
                 game.displayBoard();
                 game.switchPlayer();
                 System.out.println("Player " + game.getCurrentPlayer() + " Wins!");

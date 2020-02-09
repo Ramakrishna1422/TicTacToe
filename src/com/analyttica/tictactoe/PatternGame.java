@@ -48,7 +48,7 @@ public class PatternGame extends AbstractGame {
             for (int j = 0; j < BOARDSIZE; j++) {
                 if(board[i][j] == 0) {
                     board[i][j] = (int) 'X';
-                    int score = bestMove(0, false);
+                    int score = bestMove(false);
                     board[i][j] = 0;
                     if(score > bestScore) {
                         bestScore = score;
@@ -62,7 +62,7 @@ public class PatternGame extends AbstractGame {
     }
 
 
-    private int bestMove(int depth, boolean isMax) {
+    private int bestMove(boolean isMax) {
         boolean isWon = checkForWin();
         if(isWon) {
             return winningScore[isMax ? Players.PLAYER_1 : Players.COMPUTER];
@@ -75,7 +75,7 @@ public class PatternGame extends AbstractGame {
                 for (int j = 0; j < BOARDSIZE; j++) {
                     if(board[i][j] == 0) {
                         board[i][j] = (int) 'X';
-                        int score = bestMove(depth + 1, false);
+                        int score = bestMove(false);
                         board[i][j] = 0;
                         best = Math.max(score, best);
                     }
@@ -88,7 +88,7 @@ public class PatternGame extends AbstractGame {
                 for (int j = 0; j < BOARDSIZE; j++) {
                     if(board[i][j] == 0) {
                         board[i][j] = (int) 'O';
-                        int score = bestMove(depth + 1, true);
+                        int score = bestMove(true);
                         board[i][j] = 0;
                         best = Math.min(score, best);
                     }
